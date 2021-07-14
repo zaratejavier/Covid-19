@@ -1,6 +1,7 @@
 import './App.css';
 import { MenuItem, FormControl, Select } from '@material-ui/core';
 import { useEffect, useState } from 'react';
+import InfoBox from './InfoBox';
 
 function App() {
   const [countries, setCountries] = useState([]);
@@ -13,7 +14,7 @@ function App() {
       await fetch('https://disease.sh/v3/covid-19/countries')
         .then((respone) => respone.json())
         .then((data) => {
-          // console.log('*************', data);
+          console.log('*************', data);
           const countries = data.map((country) => ({
             name: country.country,
             value: country.countryInfo.iso2,
@@ -44,12 +45,16 @@ function App() {
           </Select>
         </FormControl>
       </div>
-      {/* Header */}
-      {/* Title + Select input dropdown field */}
 
-      {/* info boxes */}
-      {/* info boxes */}
-      {/* info boxes */}
+      <div className="app__stats">
+        {/* info boxes */}
+        <InfoBox title="Coronavirus Cases" cases={123} total={2000} />
+        <InfoBox title="Recovered" cases={1232} total={200} />
+        <InfoBox title="Deaths" cases={1232} total={40} />
+
+        {/* info boxes */}
+        {/* info boxes */}
+      </div>
 
       {/* table */}
       {/* graph */}
